@@ -10,9 +10,6 @@
 (defn add-comment! [comment]
   (swap! comments conj comment))
 
-(defonce request (atom {}))
-
-
 (defroutes app
   (GET "/" [] (resource-response "index.html" {:root "public"}))
   (GET "/comments" [] (response @comments))

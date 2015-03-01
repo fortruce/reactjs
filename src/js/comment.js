@@ -1,8 +1,3 @@
-var data = [
-  {author: "Pete Hunt", text: "This is one comment."},
-  {author: "Jordan Walke", text: "This is *another* comment."}
-];
-
 var CommentBox = React.createClass({
   loadCommentsFromServer: function () {
     $.ajax({
@@ -24,6 +19,9 @@ var CommentBox = React.createClass({
     setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   handleCommentSubmit: function(comment) {
+    var comments = this.state.data;
+    var newComments = comments.concat([comment]);
+    this.setState({data: newComments});
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -56,15 +54,15 @@ var CommentList = React.createClass({
         <Comment author={comment.author}>
           {comment.text}
         </Comment>
-          );
-      });
+      );
+    });
     return (
       <div className="commentList">
         {commentNodes}
       </div>
-        );
-    }
-  });
+    );
+  }
+});
 
 var CommentForm = React.createClass({
   handleSubmit: function(e) {
