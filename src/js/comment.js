@@ -1,3 +1,4 @@
+/*About Comment Box*/
 var CommentBox = React.createClass({
   loadCommentsFromServer: function () {
     $.ajax({
@@ -46,7 +47,7 @@ var CommentBox = React.createClass({
     );
   }
 });
-
+/*About CommentList*/
 var CommentList = React.createClass({
   render: function() {
     var commentNodes = this.props.data.map(function (comment) {
@@ -63,7 +64,7 @@ var CommentList = React.createClass({
     );
   }
 });
-
+/*About CommentForm*/
 var CommentForm = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
